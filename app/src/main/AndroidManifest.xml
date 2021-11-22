@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyFirstApp">
         <activity
+            android:name=".ccPractice"
+            android:exported="false"
+            android:label="@string/title_activity_cc_practice"
+            android:theme="@style/Theme.MyFirstApp.NoActionBar"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
