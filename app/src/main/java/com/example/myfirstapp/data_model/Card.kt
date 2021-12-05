@@ -42,6 +42,6 @@ class Card(val number: Int, val suit: Suit) {
             ""
         }
 
-        return prefix + this.getName() + "_of_" + this.suit + ".png"
+        return prefix + this.getName() + "_of_" + this.suit.name.lowercase() + ".png"
     }
 }
