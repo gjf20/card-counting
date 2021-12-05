@@ -1,8 +1,6 @@
-package com.example.myfirstapp
+package com.example.myfirstapp.data_model
 
-import org.junit.Assert.*
 import org.junit.Test
-import java.io.File
 
 class CardTest {
 

@@ -1,4 +1,4 @@
-package com.example.myfirstapp
+package com.example.myfirstapp.data_model
 
 class Card(val number: Int, val suit: Suit) {
     val imageUri: String?
