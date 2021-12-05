@@ -1,19 +1,26 @@
 package com.example.myfirstapp.data_model
 
-class Card(val number: Int, val suit: Suit) {
+class Card(val number: Int, private val suit: Suit) {
     val imageUri: String?
 
     init {
         imageUri = makeImageUri()
     }
 
-    enum class Suit(id : String) {
-        CLUBS("clubs"),
-        DIAMONDS("diamonds"),
-        HEARTS("hearts"),
-        SPADES("spades")
+    enum class Suit(id : Int) {
+        CLUBS(0),
+        DIAMONDS(1),
+        HEARTS(2),
+        SPADES(3)
     }
 
+    private fun getSuit(index: Int) : Suit {
+        return Suit.values().first {it.ordinal == index % 4}
+    }
+
+    private fun getFace(index: Int) : Int {
+        return 0
+    }
 
     fun getValue() : Int {
         return if(this.number <= 10){
