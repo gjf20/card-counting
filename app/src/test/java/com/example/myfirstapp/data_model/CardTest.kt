@@ -16,10 +16,10 @@ class CardTest {
             )
         privateGetSuitMethod.isAccessible = true
 
-        assertEquals(Card.Suit.CLUBS, privateGetSuitMethod.invoke(card, 0))
-        assertEquals(Card.Suit.CLUBS, privateGetSuitMethod.invoke(card, 4))
-        assertEquals(Card.Suit.CLUBS, privateGetSuitMethod.invoke(card, 8))
-        assertEquals(Card.Suit.CLUBS, privateGetSuitMethod.invoke(card, 24))
+        assertEquals(Card.Suit.CLUBS, privateGetSuitMethod.invoke(card, 1))
+        assertEquals(Card.Suit.CLUBS, privateGetSuitMethod.invoke(card, 5))
+        assertEquals(Card.Suit.CLUBS, privateGetSuitMethod.invoke(card, 9))
+        assertEquals(Card.Suit.CLUBS, privateGetSuitMethod.invoke(card, 25))
     }
 
     @Test
@@ -31,10 +31,10 @@ class CardTest {
             )
         privateGetSuitMethod.isAccessible = true
 
-        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card, 1))
-        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card, 5))
-        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card, 9))
-        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card, 25))
+        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card, 2))
+        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card, 6))
+        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card, 10))
+        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card, 26))
     }
 
     @Test
@@ -47,10 +47,10 @@ class CardTest {
             )
         privateGetSuitMethod.isAccessible = true
 
-        assertEquals(Card.Suit.HEARTS, privateGetSuitMethod.invoke(card, 2))
-        assertEquals(Card.Suit.HEARTS, privateGetSuitMethod.invoke(card, 6))
-        assertEquals(Card.Suit.HEARTS, privateGetSuitMethod.invoke(card, 10))
-        assertEquals(Card.Suit.HEARTS, privateGetSuitMethod.invoke(card, 26))
+        assertEquals(Card.Suit.HEARTS, privateGetSuitMethod.invoke(card, 3))
+        assertEquals(Card.Suit.HEARTS, privateGetSuitMethod.invoke(card, 7))
+        assertEquals(Card.Suit.HEARTS, privateGetSuitMethod.invoke(card, 11))
+        assertEquals(Card.Suit.HEARTS, privateGetSuitMethod.invoke(card, 27))
     }
 
     @Test
@@ -63,10 +63,10 @@ class CardTest {
             )
         privateGetSuitMethod.isAccessible = true
 
-        assertEquals(Card.Suit.SPADES, privateGetSuitMethod.invoke(card, 3))
-        assertEquals(Card.Suit.SPADES, privateGetSuitMethod.invoke(card, 7))
-        assertEquals(Card.Suit.SPADES, privateGetSuitMethod.invoke(card, 11))
-        assertEquals(Card.Suit.SPADES, privateGetSuitMethod.invoke(card, 27))
+        assertEquals(Card.Suit.SPADES, privateGetSuitMethod.invoke(card, 4))
+        assertEquals(Card.Suit.SPADES, privateGetSuitMethod.invoke(card, 8))
+        assertEquals(Card.Suit.SPADES, privateGetSuitMethod.invoke(card, 12))
+        assertEquals(Card.Suit.SPADES, privateGetSuitMethod.invoke(card, 28))
     }
 
     @Test

@@ -3,7 +3,7 @@ package com.example.myfirstapp.data_model
 class Card {
     val imageUri: String
     val number : Int
-    private val suit : Suit
+    val suit : Suit
 
     constructor(num: Int, cardSuit: Suit) {
         number = getFace(num)
@@ -25,7 +25,7 @@ class Card {
     }
 
     private fun getSuit(index: Int) : Suit {
-        return Suit.values().first {it.ordinal == index % 4}
+        return Suit.values().first {it.ordinal == (index - 1) % 4}
     }
 
     private fun getFace(index: Int) : Int {
