@@ -1,9 +1,19 @@
 package com.example.myfirstapp.data_model
 
-class Card(val number: Int, private val suit: Suit) {
-    val imageUri: String?
+class Card {
+    val imageUri: String
+    val number : Int
+    private val suit : Suit
 
-    init {
+    constructor(num: Int, cardSuit: Suit) {
+        number = getFace(num)
+        suit = cardSuit
+        imageUri = makeImageUri()
+    }
+
+    constructor(num: Int) {
+        number = getFace(num)
+        suit = getSuit(num)
         imageUri = makeImageUri()
     }
 
@@ -19,7 +29,7 @@ class Card(val number: Int, private val suit: Suit) {
     }
 
     private fun getFace(index: Int) : Int {
-        return 0
+        return ((index - 1) % 13) + 1
     }
 
     fun getValue() : Int {

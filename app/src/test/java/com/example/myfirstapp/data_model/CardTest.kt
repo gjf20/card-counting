@@ -8,7 +8,7 @@ class CardTest {
 
     @Test
     fun getSuitReturnsClubs() {
-        val card = Card(1, Card.Suit.SPADES)
+        val card = Card(1, Card.Suit.SPADES)//need this to invoke the private function
         val privateGetSuitMethod: Method =
             Card::class.java.getDeclaredMethod(
                 "getSuit",
@@ -24,22 +24,22 @@ class CardTest {
 
     @Test
     fun getSuitReturnsDiamonds() {
-        val card = Card(1, Card.Suit.SPADES)
+        val card = Card(1, Card.Suit.SPADES)//need this to invoke the private function
         val privateGetSuitMethod: Method =
             Card::class.java.getDeclaredMethod(
                 "getSuit", Int::class.java
             )
         privateGetSuitMethod.isAccessible = true
 
-        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card,1))
-        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card,5))
-        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card,9))
-        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card,25))
+        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card, 1))
+        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card, 5))
+        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card, 9))
+        assertEquals(Card.Suit.DIAMONDS, privateGetSuitMethod.invoke(card, 25))
     }
 
     @Test
     fun getSuitReturnsHearts() {
-        val card = Card(1, Card.Suit.SPADES)
+        val card = Card(1, Card.Suit.SPADES)//need this to invoke the private function
         val privateGetSuitMethod: Method =
             Card::class.java.getDeclaredMethod(
                 "getSuit",
@@ -55,7 +55,7 @@ class CardTest {
 
     @Test
     fun getSuitReturnsSpades() {
-        val card = Card(1, Card.Suit.SPADES)
+        val card = Card(1, Card.Suit.SPADES)//need this to invoke the private function
         val privateGetSuitMethod: Method =
             Card::class.java.getDeclaredMethod(
                 "getSuit",
@@ -67,6 +67,22 @@ class CardTest {
         assertEquals(Card.Suit.SPADES, privateGetSuitMethod.invoke(card, 7))
         assertEquals(Card.Suit.SPADES, privateGetSuitMethod.invoke(card, 11))
         assertEquals(Card.Suit.SPADES, privateGetSuitMethod.invoke(card, 27))
+    }
+
+    @Test
+    fun getFaceLoopsThroughAllFaces() {
+        val card = Card(1, Card.Suit.SPADES) //need this to invoke the private function
+        val privateGetSuitMethod: Method =
+            Card::class.java.getDeclaredMethod(
+                "getFace",
+                Int::class.java
+            )
+        privateGetSuitMethod.isAccessible = true
+
+        assertEquals(1, privateGetSuitMethod.invoke(card, 1))
+        assertEquals(13, privateGetSuitMethod.invoke(card, 13))
+        assertEquals(1, privateGetSuitMethod.invoke(card, 14))
+        assertEquals(2, privateGetSuitMethod.invoke(card, 15))
     }
 
     @Test
