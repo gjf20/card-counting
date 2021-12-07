@@ -41,7 +41,7 @@
         android:id="@+id/queenImageView"
         android:layout_width="150dp"
         android:layout_height="220dp"
-        android:src="@drawable/queen_of_diamonds2"
+        android:src="@drawable/queen_of_diamonds"
         app:layout_constraintBottom_toTopOf="@+id/button_next_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
