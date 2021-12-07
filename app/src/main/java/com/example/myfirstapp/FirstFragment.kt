@@ -18,7 +18,7 @@ import android.widget.ImageView
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
-    private val deck: Deck = Deck(52)
+    private val deck: Deck = Deck(1)
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -57,7 +57,6 @@ class FirstFragment : Fragment() {
 
         // setting the image in the layout
         val res = resources.getIdentifier(card.imageUri, "drawable", "com.example.myfirstapp")
-        System.out.println("The image resource ID is $res")
         imageView.setImageResource(res)
 
         // insert into main fragment view

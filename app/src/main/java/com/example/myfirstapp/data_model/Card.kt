@@ -25,7 +25,7 @@ class Card {
     }
 
     private fun getSuit(index: Int) : Suit {
-        return Suit.values().first {it.ordinal == (index - 1) % 4}
+        return Suit.values().first {it.ordinal == ((index - 1) / 13) % 4}
     }
 
     private fun getFace(index: Int) : Int {
