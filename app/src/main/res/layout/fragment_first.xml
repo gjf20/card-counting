@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/first_frag_constraint_layout"
     tools:context=".FirstFragment">
 
     <TextView
@@ -26,11 +27,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_first" />
 
+    <Button
+        android:id="@+id/button_next_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/draw_card"
+        app:layout_constraintBottom_toTopOf="@+id/button_first"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_first" />
+
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/queenImageView"
         android:layout_width="150dp"
         android:layout_height="220dp"
         android:src="@drawable/queen_of_diamonds2"
+        app:layout_constraintBottom_toTopOf="@+id/button_next_card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

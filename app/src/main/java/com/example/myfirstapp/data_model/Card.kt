@@ -59,6 +59,6 @@ class Card {
             ""
         }
 
-        return prefix + this.getName() + "_of_" + this.suit.name.lowercase() + ".png"
+        return prefix + this.getName() + "_of_" + this.suit.name.lowercase()
     }
 }

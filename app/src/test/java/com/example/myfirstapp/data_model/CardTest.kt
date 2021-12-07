@@ -128,7 +128,7 @@ class CardTest {
     @Test
     fun getImageUriHasCorrectSuit() {
         val aceOfSpades = Card(1, Card.Suit.SPADES)
-        assertEquals("ace_of_spades.png", aceOfSpades.imageUri)
+        assertEquals("ace_of_spades", aceOfSpades.imageUri)
     }
 
     @Test
@@ -136,7 +136,7 @@ class CardTest {
         enumValues<Card.Suit>().forEach { suit ->
             for(i in 2..10){
                 val card = Card(i, suit)
-                assertEquals("_"+card.number+"_of_"+suit.name.lowercase()+".png", card.imageUri)
+                assertEquals("_"+card.number+"_of_"+suit.name.lowercase(), card.imageUri)
             }
         }
     }
@@ -145,11 +145,11 @@ class CardTest {
     fun getImageUriFaceCards() {
         enumValues<Card.Suit>().forEach { suit ->
             val ace = Card(1, suit)
-            assertEquals("ace_of_${suit.name.lowercase()}.png", ace.imageUri)
+            assertEquals("ace_of_${suit.name.lowercase()}", ace.imageUri)
 
             for(i in 11..13){
                 val card = Card(i, suit)
-                assertEquals(card.getName()+"_of_"+suit.name.lowercase()+".png", card.imageUri)
+                assertEquals(card.getName()+"_of_"+suit.name.lowercase(), card.imageUri)
             }
         }
     }
