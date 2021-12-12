@@ -24,8 +24,10 @@ class DeckTest {
 
         for (i in 1..52) {
             val card = deck.drawCard()
-            faces[card.number-1]++
-            suits[card.suit.ordinal]++
+            if (card != null) {
+                faces[card.number - 1]++
+                suits[card.suit.ordinal]++
+            }
         }
 
         faces.forEachIndexed { index, count ->
@@ -48,8 +50,10 @@ class DeckTest {
 
         for (i in 1..numDecks*52) {
             val card = deck.drawCard()
-            faces[card.number-1]++
-            suits[card.suit.ordinal]++
+            if (card != null) {
+                faces[(card.number) -1]++
+                suits[card.suit.ordinal]++
+            }
         }
 
         faces.forEachIndexed { index, count ->
@@ -60,4 +64,11 @@ class DeckTest {
         }
     }
 
+    @Test
+    fun drawCardEmptyDeck() {
+        val deck = Deck(0)
+        val card = deck.drawCard()
+
+        assertNull(card)
+    }
 }

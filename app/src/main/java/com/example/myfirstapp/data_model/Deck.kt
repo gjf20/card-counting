@@ -13,7 +13,10 @@ class Deck {
         return cardArr.size
     }
 
-    fun drawCard() : Card {
+    fun drawCard() : Card? {
+        if (topCardIndex >= cardArr.size){
+            return null
+        }
         val card = cardArr[topCardIndex]
         topCardIndex++
         return card

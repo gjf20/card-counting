@@ -51,7 +51,7 @@ class FirstFragment : Fragment() {
 
     private fun showNextCard() {
 
-        val card = deck.drawCard()
+        val card = deck.drawCard() ?: return
 
         //create the image view with the card's image
         // initialising new layout
