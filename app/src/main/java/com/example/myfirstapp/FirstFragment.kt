@@ -84,8 +84,11 @@ class FirstFragment : Fragment() {
         closeButton.setOnClickListener { dialog.dismiss() }
 
         //set the running count text
-        var textView : TextView = countPopupView.findViewById(R.id.running_count)
-        textView.text = deck.getCountString()
+        val countContainer : ViewGroup = countPopupView.findViewById(R.id.count_container) //todo null check this, maybe a common function
+        val rcTextView : TextView = countContainer.findViewById(R.id.running_count)
+        rcTextView.text = deck.getCountString(deck.getRunningCount())
+        val tcTextView : TextView = countContainer.findViewById(R.id.true_count)
+        tcTextView.text = deck.getCountString(deck.getTrueCount())
 
         //show the view as a dialog
         dialogBuilder.setView(countPopupView)

@@ -76,15 +76,15 @@ class DeckTest {
     fun runningCountLowMinus() {
         val deck = Deck(1)
         drawCards(deck,1) //draw past the ace
-        val startingCount = deck.getCount()
+        val startingCount = deck.getRunningCount()
         var card = deck.drawCard()
         assertEquals("expected 2 card, got ${card?.number}", 2, card?.number)
-        assertEquals("expected count to increment", startingCount + 1, deck.getCount())
+        assertEquals("expected count to increment", startingCount + 1, deck.getRunningCount())
         deck.drawCard()
         deck.drawCard()
         deck.drawCard()
         deck.drawCard()
-        val endingCount = deck.getCount()
+        val endingCount = deck.getRunningCount()
         assertEquals("expected count to increment for any +1 count card",startingCount+5, endingCount)
     }
 
@@ -92,13 +92,13 @@ class DeckTest {
     fun runningCountMiddle0() {
         val deck = Deck(1)
         drawCards(deck,6) //draw until 7 is next
-        val startingCount = deck.getCount()
+        val startingCount = deck.getRunningCount()
         var card = deck.drawCard()
         assertEquals("expected 7 card, got ${card?.number}", 7, card?.number)
-        assertEquals("expected count not to change", startingCount, deck.getCount())
+        assertEquals("expected count not to change", startingCount, deck.getRunningCount())
         deck.drawCard()
         deck.drawCard()
-        val endingCount = deck.getCount()
+        val endingCount = deck.getRunningCount()
         assertEquals("expected count not to change for any 0 count card",startingCount, endingCount)
     }
 
@@ -106,24 +106,37 @@ class DeckTest {
     fun runningCountHighPlus() {
         val deck = Deck(1)
         drawCards(deck,9) //draw past the low cards
-        val startingCount = deck.getCount()
+        val startingCount = deck.getRunningCount()
         var card = deck.drawCard()
         assertEquals("expected 2 card, got ${card?.number}", 10, card?.number)
-        assertEquals("expected count to decrement", startingCount - 1, deck.getCount())
+        assertEquals("expected count to decrement", startingCount - 1, deck.getRunningCount())
         deck.drawCard()
         deck.drawCard()
         deck.drawCard()
-        val endingCount = deck.getCount()
+        val endingCount = deck.getRunningCount()
         assertEquals("expected count to decrement for any -1 count card",startingCount-4, endingCount)
     }
 
     @Test
     fun runningCountHighAce() {
         val deck = Deck(1)
-        val startingCount = deck.getCount()
+        val startingCount = deck.getRunningCount()
         var card = deck.drawCard()
         assertEquals("expected ace card, got ${card?.number}", 1, card?.number)
-        assertEquals("expected count to decrement", startingCount - 1, deck.getCount())
+        assertEquals("expected count to decrement", startingCount - 1, deck.getRunningCount())
+    }
+
+    @Test
+    fun trueCount() {
+        //true count varies by how many decks are left
+        val deck = Deck(1)
+        val deck2 = Deck(2)
+        assertEquals("Decks should have the same true count at the beginning", deck.getTrueCount(), deck2.getTrueCount())
+
+        deck.drawCard()
+        deck2.drawCard()
+
+        assertEquals("Decks should have different true count by factor of 2", deck.getTrueCount() / 2, deck2.getTrueCount())
     }
 
     //helper
