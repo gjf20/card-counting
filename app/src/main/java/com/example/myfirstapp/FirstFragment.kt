@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.myfirstapp.data_model.Deck
 import com.example.myfirstapp.databinding.FragmentFirstBinding
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 
 
@@ -83,6 +84,8 @@ class FirstFragment : Fragment() {
         closeButton.setOnClickListener { dialog.dismiss() }
 
         //set the running count text
+        var textView : TextView = countPopupView.findViewById(R.id.running_count)
+        textView.text = deck.getCountString()
 
         //show the view as a dialog
         dialogBuilder.setView(countPopupView)
