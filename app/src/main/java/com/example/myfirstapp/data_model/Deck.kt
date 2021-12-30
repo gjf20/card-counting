@@ -1,5 +1,7 @@
 package com.example.myfirstapp.data_model
 
+import kotlin.math.roundToInt
+
 class Deck {
     private val standardDeckSize = 52
     private val cardArr : Array<Card>
@@ -26,6 +28,11 @@ class Deck {
 
     fun getRunningCount() : Int {
         return runningCount
+    }
+
+    fun getTrueCount() : Float {
+        val decksLeft = ((cardArr.size - topCardIndex) / standardDeckSize.toFloat()).roundToInt() //estimate the number of decks left
+        return runningCount / decksLeft.toFloat()
     }
 
     fun getCountString(count : Int) : String { //TODO move to common

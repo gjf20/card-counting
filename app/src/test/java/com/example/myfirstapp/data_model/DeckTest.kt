@@ -126,6 +126,19 @@ class DeckTest {
         assertEquals("expected count to decrement", startingCount - 1, deck.getRunningCount())
     }
 
+    @Test
+    fun trueCount() {
+        //true count varies by how many decks are left
+        val deck = Deck(1)
+        val deck2 = Deck(2)
+        assertEquals("Decks should have the same true count at the beginning", deck.getTrueCount(), deck2.getTrueCount())
+
+        deck.drawCard()
+        deck2.drawCard()
+
+        assertEquals("Decks should have different true count by factor of 2", deck.getTrueCount() / 2, deck2.getTrueCount())
+    }
+
     //helper
     private fun drawCards(deck : Deck, num : Int) {
         for (i in 1..num) {
