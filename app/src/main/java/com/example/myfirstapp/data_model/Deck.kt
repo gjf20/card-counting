@@ -43,6 +43,14 @@ class Deck {
         return prefix + count
     }
 
+    fun getCountString(count : Float) : String { //TODO move to common
+        var prefix = ""
+        if (count > 0) {
+            prefix = "+"
+        }
+        return prefix + ((count * 100).roundToInt() / 100)
+    }
+
     private fun adjustCount(c : Card) {
         val value = c.getValue()
         if (value in 2..6){

@@ -6,29 +6,65 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/running_count_label"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/count_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Running Count"
         android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/running_count"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/running_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+5"
-        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/close_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/running_count_label" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/running_count_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Running Count"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/running_count"
+            app:layout_constraintEnd_toStartOf="@id/true_count_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/running_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+5"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/running_count_label"
+            app:layout_constraintStart_toStartOf="@id/running_count_label"
+            app:layout_constraintTop_toBottomOf="@id/running_count_label" />
+
+        <TextView
+            android:id="@+id/true_count_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="True Count"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/running_count_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/running_count_label"
+            app:layout_constraintTop_toTopOf="@id/running_count_label" />
+
+        <TextView
+            android:id="@+id/true_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+2.5"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/true_count_label"
+            app:layout_constraintStart_toStartOf="@id/true_count_label"
+            app:layout_constraintTop_toBottomOf="@id/true_count_label" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/close_button"
@@ -38,5 +74,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/running_count" />
+        app:layout_constraintTop_toBottomOf="@+id/count_container" />
 </androidx.constraintlayout.widget.ConstraintLayout>
