@@ -85,7 +85,7 @@ class FirstFragment : Fragment() {
 
         //set the running count text
         var textView : TextView = countPopupView.findViewById(R.id.running_count)
-        textView.text = deck.getCountString()
+        textView.text = deck.getCountString(deck.getRunningCount())
 
         //show the view as a dialog
         dialogBuilder.setView(countPopupView)

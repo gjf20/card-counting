@@ -4,7 +4,7 @@ class Deck {
     private val standardDeckSize = 52
     private val cardArr : Array<Card>
     private var topCardIndex = 0
-    private var count = 0
+    private var runningCount = 0
 
     constructor(numDecks : Int) {
         cardArr = Array<Card>(numDecks * standardDeckSize, fun(i : Int): Card {return Card(i+1)})
@@ -24,12 +24,11 @@ class Deck {
         return card
     }
 
-    fun getCount() : Int {
-        return count
+    fun getRunningCount() : Int {
+        return runningCount
     }
 
-    fun getCountString() : String {
-        val count = getCount()
+    fun getCountString(count : Int) : String { //TODO move to common
         var prefix = ""
         if (count > 0) {
             prefix = "+"
@@ -40,9 +39,9 @@ class Deck {
     private fun adjustCount(c : Card) {
         val value = c.getValue()
         if (value in 2..6){
-            count += 1
+            runningCount += 1
         } else if (value == 10 || value == 1) {
-            count -= 1
+            runningCount -= 1
         }
     }
 
