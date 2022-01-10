@@ -12,6 +12,16 @@ class Deck {
         cardArr = Array<Card>(numDecks * standardDeckSize, fun(i : Int): Card {return Card(i+1)})
     }
 
+    constructor(numDecks : Int, startingCards : Array<Card>) {
+        val numCards = numDecks * standardDeckSize
+        require (startingCards.size < numCards) {
+            "The number of cards in the starting order should not exceed the number of cards in the deck"
+        }
+
+        cardArr = Array<Card>(numCards, fun(i : Int): Card {return Card(i+1)})
+        reorderTop(startingCards)
+    }
+
     fun getLength() : Int {
         return cardArr.size
     }
@@ -58,6 +68,24 @@ class Deck {
         } else if (value == 10 || value == 1) {
             runningCount -= 1
         }
+    }
+
+    private fun reorderTop(desiredOrder : Array<Card>) {
+        for((i, card) in desiredOrder.withIndex()) {
+            val desiredCardIndex = getIndexOf(card)
+
+            cardArr[desiredCardIndex] = cardArr[i]
+            cardArr[i] = card
+        }
+    }
+
+    private fun getIndexOf(card : Card) : Int {
+        for ((i, c) in cardArr.withIndex()) {
+            if(c.getName() == card.getName() && c.suit == card.suit){
+                return i
+            }
+        }
+        return -1
     }
 
 }
