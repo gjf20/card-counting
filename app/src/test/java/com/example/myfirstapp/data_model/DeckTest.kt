@@ -43,6 +43,47 @@ class DeckTest {
     }
 
     @Test
+    fun deckCanStartWithSpecifiedOrderContainingDuplicates() {
+        //specify the first 10 cards
+        val expectedSuit = Card.Suit.SPADES
+        val numDecks = 2
+        val numCardsToReorder = 3
+        val desiredOrder = Array<Card>(numCardsToReorder, fun (i : Int) : Card {return Card((i % 2) + 1, expectedSuit)})
+        val deck = Deck(numDecks, desiredOrder)
+        val deck2 = Deck(numDecks, desiredOrder)
+
+        for (c : Card in desiredOrder) {
+            val card = deck.drawCard()
+            assert(card != null, fun(): String { return "Card was null" })
+            assert(card?.number == c.number,  fun(): String { return "Card number ${card?.number} was not ${c.number}" })
+            assert(
+                card?.suit == c.suit,
+                fun(): String { return "Card suit ${card?.suit} was not ${c.suit}" })
+        }
+        //check that s deck has all the cards
+        verifyAllCardsInDeck(deck2, numDecks)
+    }
+
+    @Test
+    fun deckForbidsStartingOrderWithTooManyCopiesOfCard() {
+        //specify the first 10 cards
+        val expectedSuit = Card.Suit.SPADES
+        val numDecks = 1 //there will only be one copy of each card
+        val numCardsToReorder = 3
+        val desiredOrder = Array<Card>(numCardsToReorder, fun (i : Int) : Card {return Card((i % 2) + 1, expectedSuit)}) //desires 2 Aces of Spades
+
+        try {
+            val deck = Deck(numDecks, desiredOrder)
+        } catch (e: IllegalArgumentException) {
+            e.message?.let {
+                assert(
+                    it.contains("are not valid for $numDecks copies of a standard deck"),
+                    fun(): String { return "Exception should reflect that the starting order argument was invalid" })
+            }
+        }
+    }
+
+    @Test
     fun deckForbidsOrderingWithTooManyCards() {
         //attempt to specify 53 cards
         val numDecks = 1
@@ -176,7 +217,7 @@ class DeckTest {
         val faces = Array<Int>(13, fun(_ : Int): Int {return 0})
         val suits = Array<Int>(4, fun(_ : Int): Int {return 0})
 
-        for (i in 1..52) {
+        for (i in 1..(52 * numDecks)) {
             val card = deck.drawCard()
             if (card != null) {
                 faces[card.number - 1]++

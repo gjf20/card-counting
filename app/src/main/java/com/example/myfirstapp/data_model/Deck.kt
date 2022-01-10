@@ -19,7 +19,10 @@ class Deck {
         }
 
         cardArr = Array<Card>(numCards, fun(i : Int): Card {return Card(i+1)})
-        reorderTop(startingCards)
+        val isValidReorder = reorderTop(startingCards)
+        require(isValidReorder) {
+            "The cards specified in the starting order are not valid for $numDecks copies of a standard deck"
+        }
     }
 
     fun getLength() : Int {
@@ -70,17 +73,22 @@ class Deck {
         }
     }
 
-    private fun reorderTop(desiredOrder : Array<Card>) {
+    private fun reorderTop(desiredOrder : Array<Card>) : Boolean {
         for((i, card) in desiredOrder.withIndex()) {
-            val desiredCardIndex = getIndexOf(card)
+            val desiredCardIndex = getIndexOf(card, i)
+            if (desiredCardIndex == -1) {
+                return false
+            }
 
             cardArr[desiredCardIndex] = cardArr[i]
             cardArr[i] = card
         }
+        return true
     }
 
-    private fun getIndexOf(card : Card) : Int {
-        for ((i, c) in cardArr.withIndex()) {
+    private fun getIndexOf(card : Card, startingIndex : Int) : Int {
+        for (i in startingIndex..(cardArr.size-1)) {
+            val c = cardArr[i]
             if(c.getName() == card.getName() && c.suit == card.suit){
                 return i
             }
