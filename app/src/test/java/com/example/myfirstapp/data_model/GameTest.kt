@@ -95,4 +95,79 @@ class GameTest {
         val score = game.getPlayerScore()
         assert(score == expectedScore, fun() : String {return "Player starting score was $score instead of $expectedScore"})
     }
+
+
+    @Test
+    fun startDealerScore() {
+        val deck = Deck(1)
+        val game = Game(deck)
+        val expectedScore = 0
+
+        val score = game.getDealerScore()
+        assert(score == expectedScore, fun() : String {return "Player starting score was $score instead of $expectedScore"})
+    }
+
+    @Test
+    fun dealerScoreTotalsCards() {
+        val numCardsToReorder = 2
+        val expectedScore = 9
+        val startingCards = Array<Card>(
+            numCardsToReorder,
+            fun(i: Int): Card { return Card(i + 4, Card.Suit.SPADES) })
+        val deck = Deck(1, startingCards)
+        val game = Game(deck)
+
+        game.hitDealer()
+        game.hitDealer()
+
+        val score = game.getDealerScore()
+        assert(score == expectedScore, fun() : String {return "Dealer starting score was $score instead of $expectedScore"})
+    }
+
+    @Test
+    fun dealerScoreAceStand() {
+        val numCardsToReorder = 2
+        val expectedScore = 13
+        val startingCards = Array<Card>(
+            numCardsToReorder,
+            fun(i: Int): Card { return Card(i + 1, Card.Suit.SPADES) })
+        val deck = Deck(1, startingCards)
+        val game = Game(deck)
+
+        game.hitDealer()
+        game.hitDealer()
+
+        val score = game.getDealerScore()
+        assert(score == expectedScore, fun() : String {return "Dealer starting score was $score instead of $expectedScore"})
+    }
+
+    @Test
+    fun playerScoreAceBust() {
+        val numCardsToReorder = 3
+        val expectedScore = 26
+        val startingCards = Array<Card>(
+            numCardsToReorder,
+            fun(i: Int): Card {
+                return when (i) {
+                    0 -> {
+                        Card(5, Card.Suit.CLUBS)
+                    }
+                    1 -> {
+                        Card(1, Card.Suit.CLUBS)
+                    }
+                    else -> {
+                        Card(11, Card.Suit.CLUBS)
+                    }
+                }
+            })
+        val deck = Deck(1, startingCards)
+        val game = Game(deck)
+
+        game.hitDealer()
+        game.hitDealer()
+        game.hitDealer()
+
+        val score = game.getDealerScore()
+        assert(score == expectedScore, fun() : String {return "Dealer starting score was $score instead of $expectedScore"})
+    }
 }
