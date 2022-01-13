@@ -1,5 +1,6 @@
 package com.example.myfirstapp.data_model
 
+import java.lang.Exception
 import kotlin.math.roundToInt
 
 class Deck {
@@ -29,9 +30,9 @@ class Deck {
         return cardArr.size
     }
 
-    fun drawCard() : Card? {
+    fun drawCard() : Card {
         if (topCardIndex >= cardArr.size){
-            return null
+            throw OutOfCardsException()
         }
         val card = cardArr[topCardIndex]
         topCardIndex++
@@ -97,3 +98,5 @@ class Deck {
     }
 
 }
+
+class OutOfCardsException : Exception() {}

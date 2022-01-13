@@ -1,6 +1,6 @@
 package com.example.myfirstapp.data_model
 
-import junit.framework.Assert.assertEquals
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.lang.reflect.Method
 
@@ -152,5 +152,40 @@ class CardTest {
                 assertEquals(card.getName()+"_of_"+suit.name.lowercase(), card.imageUri)
             }
         }
+    }
+
+    @Test
+    fun equalsReturnsTrue() {
+        val matchingSuit = Card.Suit.CLUBS
+        val matchingNum = 12
+
+        val card1 = Card(matchingNum, matchingSuit)
+        val card2 = Card(matchingNum, matchingSuit)
+
+        assert(card1.equals(card2))
+    }
+
+    @Test
+    fun equalsReturnsDifferentSuits() {
+        val suit1 = Card.Suit.CLUBS
+        val suit2 = Card.Suit.SPADES
+        val matchingNum = 12
+
+        val card1 = Card(matchingNum, suit1)
+        val card2 = Card(matchingNum, suit2)
+
+        assert(!card1.equals(card2))
+    }
+
+    @Test
+    fun equalsReturnsDifferentNum() {
+        val matchingSuit = Card.Suit.CLUBS
+        val num1 = 12
+        val num2 = 13
+
+        val card1 = Card(num1, matchingSuit)
+        val card2 = Card(num2, matchingSuit)
+
+        assert(!card1.equals(card2))
     }
 }

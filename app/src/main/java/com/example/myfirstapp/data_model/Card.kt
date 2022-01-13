@@ -51,6 +51,10 @@ class Card {
         }
     }
 
+    fun equals(c : Card) : Boolean {
+        return (this.suit == c.suit) && (this.number == c.number)
+    }
+
     private fun makeImageUri() : String {
         val prefix = if(this.getName().all { Character.isDigit(it) }) {
             "_"

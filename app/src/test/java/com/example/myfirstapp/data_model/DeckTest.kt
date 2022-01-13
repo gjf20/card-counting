@@ -2,7 +2,6 @@ package com.example.myfirstapp.data_model
 
 import org.junit.Assert.*
 import org.junit.Test
-import javax.crypto.spec.DESKeySpec
 
 class DeckTest {
 
@@ -128,12 +127,10 @@ class DeckTest {
         }
     }
 
-    @Test
+    @Test(expected = OutOfCardsException::class)
     fun drawCardEmptyDeck() {
         val deck = Deck(0)
-        val card = deck.drawCard()
-
-        assertNull(card)
+        deck.drawCard()
     }
 
     @Test

@@ -10,6 +10,18 @@ class Game {
         deck = deckForGame
     }
 
+    fun setup(){
+        hitPlayer()
+        hitDealer()
+        hitPlayer()
+        hitDealer()
+
+    }
+
+    fun getPlayerHand() : Array<Card> {
+        return playerHand.toTypedArray()
+    }
+
     fun getPlayerScore() : Int {
         var sum = 0
         var aceCount = 0
@@ -33,13 +45,14 @@ class Game {
         return sum
     }
 
-    fun hitPlayer() {
+    fun hitPlayer() : Card {
         val card = deck.drawCard()
-        if (card == null) {
-            println("Tried to draw a card from deck but card was null")
-        } else {
-            playerHand.add(card)
-        }
+        playerHand.add(card)
+        return card
+    }
+
+    fun getDealerHand() : Array<Card> {
+        return dealerHand.toTypedArray()
     }
 
     fun getDealerScore() : Int {
@@ -53,12 +66,9 @@ class Game {
         return sum
     }
 
-    fun hitDealer() {
+    fun hitDealer() : Card {
         val card = deck.drawCard()
-        if (card == null) {
-            println("Tried to draw a card from deck but card was null")
-        } else {
-            dealerHand.add(card)
-        }
+        dealerHand.add(card)
+        return card
     }
 }
